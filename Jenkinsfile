@@ -11,9 +11,10 @@ node{
         stage('SonarQube Analysis') { 
            // def mvnHome
             //mvnHome = tool 'Maven'
+            def scannerHome = tool 'SonarQube Scanner 2.6.1';
             withSonarQubeEnv('Sonar') { 
                 if (isUnix()) {
-                    sh "'sonar-scanner'"+ 
+                    sh "${scannerHome}/bin/sonar-scanner" + 
                     " -Dsonar.projectKey=org.sonarqube:java-sonar_MVN_SQ " +
                     " -Dsonar.projectName='Java :: Simple Spring Project_MVN_SQ' " +
                     " -Dsonar.projectVersion=1.0 " +
