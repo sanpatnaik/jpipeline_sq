@@ -11,7 +11,7 @@ node{
         stage('SonarQube Analysis') { 
            // def mvnHome
             //mvnHome = tool 'Maven'
-            def scannerHome = tool 'SonarQube Scanner 2.6.1';
+            def scannerHome = tool 'SQScanner';
             withSonarQubeEnv('Sonar') { 
                 if (isUnix()) {
                     sh "${scannerHome}/bin/sonar-scanner" + 
