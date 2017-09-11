@@ -1,23 +1,13 @@
 node{
 
     checkout scm
-    def mvnHome
+    //def mvnHome
     dir('BuildQuality'){
         stage('Preparation'){
                         
             git 'https://github.com/sanpatnaik/simple-spring.git'
-            mvnHome = tool 'Maven'
+            //mvnHome = tool 'Maven'
         }
-
-        stage('Build') {
-            // Run the maven build
-            if (isUnix()) {
-                sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-            } else {
-                bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
-            }
-        }
-        
         stage('SonarQube Analysis') { 
            // def mvnHome
             //mvnHome = tool 'Maven'
